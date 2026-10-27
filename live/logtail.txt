@@ -1,0 +1,138 @@
+optimizer=ultron lr=0.0001 betas=(0.9, 0.984095744256) beta2_reference_tokens=None factored_beta1=0.0 batch=4 accum=1 amp=True reason=False eval_batches=1 compile_loss=False
+checkpoint step 18583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+start step 18583, tokens 38057984; val total/lm/close/depth=(0.507577121257782, 0.507577121257782, nan, nan)
+step 18584: train 0.4824 ema 0.4824; lm/close/depth=(0.48235172033309937, nan, nan); warmup
+step 18783: train 0.3490 ema 0.5142; lm/close/depth=(0.34897273778915405, nan, nan); val=(0.523353099822998, 0.523353099822998, nan, nan); 8696 tok/s
+step 18983: train 0.2002 ema 0.4581; lm/close/depth=(0.20023447275161743, nan, nan); val=(0.5151388049125671, 0.5151388049125671, nan, nan); 9183 tok/s
+step 19183: train 0.5308 ema 0.5145; lm/close/depth=(0.5307616591453552, nan, nan); val=(0.5154224634170532, 0.5154224634170532, nan, nan); 9237 tok/s
+step 19383: train 0.4571 ema 0.5232; lm/close/depth=(0.4570980370044708, nan, nan); val=(0.5102231502532959, 0.5102231502532959, nan, nan); 9128 tok/s
+step 19583: train 0.6449 ema 0.5302; lm/close/depth=(0.6448884010314941, nan, nan); val=(0.5080151557922363, 0.5080151557922363, nan, nan); 8625 tok/s
+checkpoint step 19583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+checkpoint step 19783: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.496731 at step 19783
+step 19783: train 0.5121 ema 0.5117; lm/close/depth=(0.5120934247970581, nan, nan); val=(0.4967311918735504, 0.4967311918735504, nan, nan); 7971 tok/s
+step 19983: train 0.5866 ema 0.4941; lm/close/depth=(0.5866308212280273, nan, nan); val=(0.5001572966575623, 0.5001572966575623, nan, nan); 8699 tok/s
+checkpoint step 20183: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.494734 at step 20183
+step 20183: train 0.4427 ema 0.5090; lm/close/depth=(0.4427187740802765, nan, nan); val=(0.4947337210178375, 0.4947337210178375, nan, nan); 8592 tok/s
+checkpoint step 20383: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.487771 at step 20383
+step 20383: train 0.3765 ema 0.4325; lm/close/depth=(0.3765260875225067, nan, nan); val=(0.4877713620662689, 0.4877713620662689, nan, nan); 8757 tok/s
+checkpoint step 20583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.486108 at step 20583
+step 20583: train 0.3876 ema 0.4944; lm/close/depth=(0.3876124918460846, nan, nan); val=(0.4861082136631012, 0.4861082136631012, nan, nan); 8933 tok/s
+checkpoint step 20583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+checkpoint step 20783: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.479110 at step 20783
+step 20783: train 0.6551 ema 0.4597; lm/close/depth=(0.6550803184509277, nan, nan); val=(0.4791100025177002, 0.4791100025177002, nan, nan); 8795 tok/s
+step 20983: train 0.3553 ema 0.4235; lm/close/depth=(0.35532912611961365, nan, nan); val=(0.48111051321029663, 0.48111051321029663, nan, nan); 9059 tok/s
+step 21183: train 0.5233 ema 0.4406; lm/close/depth=(0.5232678055763245, nan, nan); val=(0.47985345125198364, 0.47985345125198364, nan, nan); 8719 tok/s
+checkpoint step 21383: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.472925 at step 21383
+step 21383: train 0.1542 ema 0.4335; lm/close/depth=(0.1542109102010727, nan, nan); val=(0.4729250371456146, 0.4729250371456146, nan, nan); 7911 tok/s
+checkpoint step 21583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.471071 at step 21583
+step 21583: train 0.4540 ema 0.4920; lm/close/depth=(0.45403990149497986, nan, nan); val=(0.4710710942745209, 0.4710710942745209, nan, nan); 8152 tok/s
+checkpoint step 21583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+checkpoint step 21783: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.468841 at step 21783
+step 21783: train 0.7004 ema 0.4456; lm/close/depth=(0.7003708481788635, nan, nan); val=(0.4688405692577362, 0.4688405692577362, nan, nan); 8960 tok/s
+step 21983: train 0.3836 ema 0.3870; lm/close/depth=(0.3836333155632019, nan, nan); val=(0.47412312030792236, 0.47412312030792236, nan, nan); 9200 tok/s
+checkpoint step 22183: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.467949 at step 22183
+step 22183: train 0.3645 ema 0.4296; lm/close/depth=(0.36446475982666016, nan, nan); val=(0.4679490029811859, 0.4679490029811859, nan, nan); 9064 tok/s
+checkpoint step 22383: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.467910 at step 22383
+step 22383: train 0.3880 ema 0.4482; lm/close/depth=(0.38801905512809753, nan, nan); val=(0.4679102897644043, 0.4679102897644043, nan, nan); 9151 tok/s
+checkpoint step 22583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.466695 at step 22583
+step 22583: train 0.2784 ema 0.4624; lm/close/depth=(0.2783762216567993, nan, nan); val=(0.46669453382492065, 0.46669453382492065, nan, nan); 9237 tok/s
+checkpoint step 22583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+checkpoint step 22783: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.462785 at step 22783
+step 22783: train 0.4015 ema 0.4388; lm/close/depth=(0.4015336334705353, nan, nan); val=(0.462785005569458, 0.462785005569458, nan, nan); 8979 tok/s
+checkpoint step 22983: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.456735 at step 22983
+step 22983: train 0.4412 ema 0.4784; lm/close/depth=(0.4412232041358948, nan, nan); val=(0.45673489570617676, 0.45673489570617676, nan, nan); 8802 tok/s
+step 23183: train 0.3521 ema 0.4188; lm/close/depth=(0.3521488904953003, nan, nan); val=(0.45792636275291443, 0.45792636275291443, nan, nan); 9159 tok/s
+checkpoint step 23383: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.454631 at step 23383
+step 23383: train 0.4889 ema 0.4462; lm/close/depth=(0.48890095949172974, nan, nan); val=(0.45463088154792786, 0.45463088154792786, nan, nan); 9207 tok/s
+checkpoint step 23583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.449663 at step 23583
+step 23583: train 0.3415 ema 0.4982; lm/close/depth=(0.3414595127105713, nan, nan); val=(0.4496631622314453, 0.4496631622314453, nan, nan); 9187 tok/s
+checkpoint step 23583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+checkpoint step 23783: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.447489 at step 23783
+step 23783: train 0.3812 ema 0.4711; lm/close/depth=(0.3811618387699127, nan, nan); val=(0.44748926162719727, 0.44748926162719727, nan, nan); 8899 tok/s
+checkpoint step 23983: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.445883 at step 23983
+step 23983: train 0.3459 ema 0.4114; lm/close/depth=(0.34593266248703003, nan, nan); val=(0.4458831250667572, 0.4458831250667572, nan, nan); 9691 tok/s
+checkpoint step 24183: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.444196 at step 24183
+step 24183: train 0.2177 ema 0.4459; lm/close/depth=(0.21765021979808807, nan, nan); val=(0.4441962242126465, 0.4441962242126465, nan, nan); 10494 tok/s
+checkpoint step 24383: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.443221 at step 24383
+step 24383: train 0.3556 ema 0.4375; lm/close/depth=(0.3556416630744934, nan, nan); val=(0.44322118163108826, 0.44322118163108826, nan, nan); 10597 tok/s
+step 24583: train 0.4207 ema 0.4165; lm/close/depth=(0.4207209646701813, nan, nan); val=(0.4435991644859314, 0.4435991644859314, nan, nan); 10751 tok/s
+checkpoint step 24583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+checkpoint step 24783: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.441496 at step 24783
+step 24783: train 0.2965 ema 0.4016; lm/close/depth=(0.2965465486049652, nan, nan); val=(0.4414961040019989, 0.4414961040019989, nan, nan); 10429 tok/s
+checkpoint step 24983: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.438896 at step 24983
+step 24983: train 0.2558 ema 0.4042; lm/close/depth=(0.2557826042175293, nan, nan); val=(0.43889614939689636, 0.43889614939689636, nan, nan); 10611 tok/s
+checkpoint step 25183: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.438635 at step 25183
+step 25183: train 0.6322 ema 0.4401; lm/close/depth=(0.6321951150894165, nan, nan); val=(0.4386347234249115, 0.4386347234249115, nan, nan); 10493 tok/s
+checkpoint step 25383: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.434565 at step 25383
+step 25383: train 0.7220 ema 0.4477; lm/close/depth=(0.7219639420509338, nan, nan); val=(0.43456459045410156, 0.43456459045410156, nan, nan); 10595 tok/s
+checkpoint step 25583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.431674 at step 25583
+step 25583: train 0.4212 ema 0.4808; lm/close/depth=(0.4212077260017395, nan, nan); val=(0.43167436122894287, 0.43167436122894287, nan, nan); 8560 tok/s
+checkpoint step 25583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+checkpoint step 25783: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.430643 at step 25783
+step 25783: train 0.5790 ema 0.4534; lm/close/depth=(0.5790203809738159, nan, nan); val=(0.4306427538394928, 0.4306427538394928, nan, nan); 8897 tok/s
+checkpoint step 25983: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.427327 at step 25983
+step 25983: train 0.5762 ema 0.4396; lm/close/depth=(0.5762491822242737, nan, nan); val=(0.4273265600204468, 0.4273265600204468, nan, nan); 9026 tok/s
+checkpoint step 26183: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.426049 at step 26183
+step 26183: train 0.4073 ema 0.4172; lm/close/depth=(0.40729862451553345, nan, nan); val=(0.4260494112968445, 0.4260494112968445, nan, nan); 9000 tok/s
+step 26383: train 0.3250 ema 0.3837; lm/close/depth=(0.3250078558921814, nan, nan); val=(0.43014222383499146, 0.43014222383499146, nan, nan); 9044 tok/s
+checkpoint step 26583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.424415 at step 26583
+step 26583: train 0.5572 ema 0.4355; lm/close/depth=(0.5572131276130676, nan, nan); val=(0.4244151711463928, 0.4244151711463928, nan, nan); 9076 tok/s
+checkpoint step 26583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+step 26783: train 0.5633 ema 0.4192; lm/close/depth=(0.5633123517036438, nan, nan); val=(0.4260714054107666, 0.4260714054107666, nan, nan); 8814 tok/s
+checkpoint step 26983: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.421022 at step 26983
+step 26983: train 0.5976 ema 0.4230; lm/close/depth=(0.5976384878158569, nan, nan); val=(0.42102155089378357, 0.42102155089378357, nan, nan); 8847 tok/s
+checkpoint step 27183: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.419358 at step 27183
+step 27183: train 0.3564 ema 0.4101; lm/close/depth=(0.3564082980155945, nan, nan); val=(0.4193580746650696, 0.4193580746650696, nan, nan); 8911 tok/s
+checkpoint step 27383: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.419047 at step 27383
+step 27383: train 0.3188 ema 0.3762; lm/close/depth=(0.31881335377693176, nan, nan); val=(0.41904717683792114, 0.41904717683792114, nan, nan); 9025 tok/s
+checkpoint step 27583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.417946 at step 27583
+step 27583: train 0.5235 ema 0.4237; lm/close/depth=(0.5234865546226501, nan, nan); val=(0.4179458022117615, 0.4179458022117615, nan, nan); 9002 tok/s
+checkpoint step 27583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+checkpoint step 27783: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.416990 at step 27783
+step 27783: train 0.5666 ema 0.4121; lm/close/depth=(0.566619873046875, nan, nan); val=(0.41699033975601196, 0.41699033975601196, nan, nan); 8884 tok/s
+checkpoint step 27983: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.410947 at step 27983
+step 27983: train 0.2913 ema 0.3707; lm/close/depth=(0.29130712151527405, nan, nan); val=(0.4109470248222351, 0.4109470248222351, nan, nan); 8814 tok/s
+step 28183: train 0.2946 ema 0.3801; lm/close/depth=(0.2946363091468811, nan, nan); val=(0.4132915437221527, 0.4132915437221527, nan, nan); 9072 tok/s
+checkpoint step 28383: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.409184 at step 28383
+step 28383: train 0.2734 ema 0.3907; lm/close/depth=(0.2733515501022339, nan, nan); val=(0.40918371081352234, 0.40918371081352234, nan, nan); 8933 tok/s
+checkpoint step 28583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_best.pt
+new best validation total=0.407451 at step 28583
+step 28583: train 0.4299 ema 0.4039; lm/close/depth=(0.4299148917198181, nan, nan); val=(0.4074508249759674, 0.4074508249759674, nan, nan); 9191 tok/s
+checkpoint step 28583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+checkpoint step 28583: E:\lsm30_out\ultron_webmix_websight_webgen_30m_b4s512_eager_last.pt
+complete: 9085 tok/s, 20480000 new tokens, 58537984 total; val=(0.4074508249759674, 0.4074508249759674, nan, nan); optimizer_state=47.5 MiB

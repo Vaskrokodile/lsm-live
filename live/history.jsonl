@@ -150,3 +150,4 @@
 {"step":29583,"train":0.7123,"ema":0.9665,"event":"log","val":0.7007179260253906,"val_lm":0.38584521412849426,"val_close":1.131378173828125,"val_depth":0.9677734375,"tok_s":4497}
 {"step":29583,"checkpoint":"ultron_webmixv2_reason_30m_b4s512_eager_last.pt","kind":"last","event":"checkpoint"}
 {"step":29783,"train":0.6101,"ema":0.88,"event":"log","val":0.681413471698761,"val_lm":0.3840547502040863,"val_close":1.287078857421875,"val_depth":0.6953125,"tok_s":4996}
+{"step":29983,"train":0.88,"ema":0.8997,"event":"log","val":0.7152581214904785,"val_lm":0.38837820291519165,"val_close":1.224609375,"val_depth":0.95458984375,"tok_s":4932}

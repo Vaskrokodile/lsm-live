@@ -203,6 +203,7 @@ function renderCharts(hist) {
   const train = logs.map((r) => (r.train != null ? r.train : null));
   const ema = logs.map((r) => (r.ema != null ? r.ema : null));
   const val = logs.map((r) => (r.val != null ? r.val : null));
+  const valLm = logs.map((r) => (r.val_lm != null ? r.val_lm : null));
   const tps = logs.map((r) => (r.tok_s != null ? r.tok_s : null));
 
   const bests = hist.filter((r) => r.event === "best" && r.val != null);
@@ -279,6 +280,16 @@ function renderCharts(hist) {
           itemStyle: { color: "#f0b429" },
           connectNulls: true,
           z: 3,
+        },
+        {
+          name: "val lm",
+          type: "line",
+          data: steps.map((s, i) => [s, valLm[i]]),
+          showSymbol: false,
+          lineStyle: { width: 1.2, color: "#c98ff0", type: "dashed" },
+          itemStyle: { color: "#c98ff0" },
+          connectNulls: true,
+          z: 2,
         },
         {
           name: "best",

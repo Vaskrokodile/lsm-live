@@ -147,3 +147,5 @@
 {"step":29383,"checkpoint":"ultron_webmixv2_reason_30m_b4s512_eager_best.pt","kind":"best","event":"checkpoint"}
 {"step":29383,"val":0.676635,"event":"best"}
 {"step":29383,"train":0.9459,"ema":0.8854,"event":"log","val":0.6766350269317627,"val_lm":0.38232046365737915,"val_close":1.18182373046875,"val_depth":0.7802734375,"tok_s":5057}
+{"step":29583,"train":0.7123,"ema":0.9665,"event":"log","val":0.7007179260253906,"val_lm":0.38584521412849426,"val_close":1.131378173828125,"val_depth":0.9677734375,"tok_s":4497}
+{"step":29583,"checkpoint":"ultron_webmixv2_reason_30m_b4s512_eager_last.pt","kind":"last","event":"checkpoint"}

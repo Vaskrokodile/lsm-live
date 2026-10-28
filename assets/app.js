@@ -18,14 +18,17 @@ const nf = new Intl.NumberFormat("en-US");
 
 async function fetchLive(name, kind) {
   const bust = `t=${Date.now()}`;
+  const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/live/${name}?ref=${GH_BRANCH}&${bust}`;
   const tries = [
     { url: `${RAW_BASE}/${name}?${bust}`, src: "github:raw" },
+    { url: apiUrl, src: "github:api", api: true },
     { url: `${LOCAL_BASE}/${name}?${bust}`, src: "local" },
   ];
   let lastErr = null;
   for (const t of tries) {
     try {
-      const res = await fetch(t.url, { cache: "no-store" });
+      const headers = t.api ? { Accept: "application/vnd.github.raw" } : {};
+      const res = await fetch(t.url, { cache: "no-store", headers });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setSrcNote(t.src);
       return kind === "json" ? res.json() : res.text();
@@ -40,7 +43,9 @@ function setSrcNote(src) {
   const el = $("src-note");
   if (el) el.textContent = `src:${src}`;
   const f = $("foot-src");
-  if (f) f.textContent = `serving ${src === "local" ? "same-origin files" : "raw.githubusercontent.com"}`;
+  const label = src === "local" ? "same-origin files"
+    : src === "github:api" ? "github contents api" : "raw.githubusercontent.com";
+  if (f) f.textContent = `serving ${label}`;
 }
 
 function parseJsonl(text) {

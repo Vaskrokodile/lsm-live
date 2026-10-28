@@ -71,11 +71,14 @@
     <div class="kpi">
       <div class="kpi-label">VAL LOSS</div>
       <div class="kpi-val mono" id="k-val">—</div>
+      <div class="kpi-foot mono" id="k-val-source"></div>
     </div>
     <div class="kpi kpi-best">
       <div class="kpi-label">BEST VAL</div>
       <div class="kpi-val mono" id="k-best">—</div>
       <div class="kpi-foot mono" id="k-best-step"></div>
+      <div class="kpi-foot mono" id="best-ckpt"></div>
+      <div class="kpi-foot mono" id="k-best-source"></div>
     </div>
   </section>
 
@@ -86,12 +89,31 @@
       <div class="legend mono">
         <span class="lg"><i class="sw sw-train"></i>train</span>
         <span class="lg"><i class="sw sw-ema"></i>train EMA</span>
-        <span class="lg"><i class="sw sw-val"></i>val</span>
-        <span class="lg"><i class="sw sw-best"></i>best</span>
+        <span class="lg"><i class="sw sw-val"></i>val total v2</span>
+        <span class="lg"><i class="sw sw-val-v3a"></i>val total v3a</span>
+        <span class="lg"><i class="sw sw-legacy"></i>val total unlabeled corpus</span>
+        <span class="lg"><i class="sw sw-current"></i>val total tagged dataset</span>
+        <span class="lg"><i class="sw sw-best"></i>best total</span>
         <span class="lg"><i class="sw sw-ckpt"></i>checkpoint</span>
       </div>
     </div>
     <div id="loss-chart" class="chart"></div>
+  </section>
+
+  <!-- Generated HTML quality -->
+  <section class="card">
+    <div class="card-head">
+      <h2>GENERATED HTML STRUCTURE</h2>
+      <span class="mono muted" id="html-eval-meta">latest checkpoint evaluation</span>
+    </div>
+    <div class="kpis quality-kpis">
+      <div class="kpi"><div class="kpi-label">TAG CLOSURE</div><div class="kpi-val mono" id="html-balance">—</div></div>
+      <div class="kpi"><div class="kpi-label">FULLY BALANCED</div><div class="kpi-val mono" id="html-balanced">—</div></div>
+      <div class="kpi"><div class="kpi-label">DOCTYPE</div><div class="kpi-val mono" id="html-doctype">—</div></div>
+      <div class="kpi"><div class="kpi-label">HTML / BODY PAIRS</div><div class="kpi-val mono" id="html-pairs">—</div></div>
+    </div>
+    <p class="mono muted" id="html-eval-note">HTML validity is evaluated on generated samples; see sample count and decode settings in the run report.</p>
+    <p class="mono muted" id="html-comparison"></p>
   </section>
 
   <!-- Throughput + config -->
@@ -121,7 +143,7 @@
   <!-- Log tail -->
   <section class="card">
     <div class="card-head">
-      <h2>LOG TAIL</h2>
+      <h2>METRIC EVENTS</h2>
       <div class="logctl">
         <span class="mono muted" id="log-meta"></span>
         <label class="mono autoscroll"><input type="checkbox" id="autoscroll" checked> autoscroll</label>

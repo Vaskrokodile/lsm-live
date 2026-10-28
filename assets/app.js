@@ -62,6 +62,9 @@ function parseJsonl(text) {
 
 const fmtNum = (n) => (n == null || isNaN(n) ? "—" : nf.format(Math.round(n)));
 const fmtLoss = (v) => (v == null || isNaN(v) ? "—" : Number(v).toFixed(4));
+const fmtPct = (v) => (v == null || isNaN(v) ? "—" : (100 * Number(v)).toFixed(1) + "%");
+const fmtRateCount = (rate, total) => rate == null || total == null ? "—" : `${Math.round(rate * total)} / ${total}`;
+const fmtCount = (count, total) => count == null || total == null ? "—" : `${count} / ${total}`;
 const fmtToks = (n) => {
   if (n == null || isNaN(n)) return "—";
   if (n >= 1e9) return (n / 1e9).toFixed(2) + "B";
@@ -87,6 +90,10 @@ const STATE_CLS = { training: "pill-training", idle: "pill-idle", done: "pill-do
 
 function renderStatus(st) {
   const pill = $("state-pill");
+  if ($("best-ckpt")) {
+    $("best-ckpt").textContent = st.best_checkpoint
+      ? `best ckpt ${basename(st.best_checkpoint)}` : "";
+  }
   const state = String(st.state || "idle").toLowerCase();
   pill.className = "pill " + (STATE_CLS[state] || "pill-idle");
   $("state-txt").textContent = state;
@@ -113,14 +120,60 @@ function renderStatus(st) {
   $("k-train").textContent = fmtLoss(st.train_loss);
   $("k-ema").textContent = fmtLoss(st.train_ema);
   $("k-val").textContent = fmtLoss(st.val_total);
+  $("k-val-source").textContent = st.val_total_source ? `source ${st.val_total_source}` : "";
   $("k-best").textContent = fmtLoss(st.best_val);
   $("k-best-step").textContent =
     st.best_step != null ? `@ step ${nf.format(st.best_step)}` : "";
+  $("k-best-source").textContent = st.best_val_source ? `source ${st.best_val_source}` : "";
 
   $("updated").textContent = st.updated_at ? `updated ${ago(st.updated_at)}` : "—";
   $("updated").title = st.updated_at || "";
 
   renderConfig(st.config);
+  renderHtmlQuality(st.generation_eval, st.generation_comparison);
+}
+
+function renderHtmlQuality(evalRow, comparison) {
+  const meta = $("html-eval-meta");
+  const note = $("html-eval-note");
+  const paired = $("html-comparison");
+  if (!evalRow || typeof evalRow !== "object") {
+    $("html-balance").textContent = "—";
+    $("html-balanced").textContent = "—";
+    $("html-doctype").textContent = "—";
+    $("html-pairs").textContent = "—";
+    meta.textContent = "no generated-page evaluation";
+    note.textContent = "No samples evaluated for this run.";
+  } else {
+    const n = Number.isInteger(evalRow.samples) && evalRow.samples > 0 ? evalRow.samples : null;
+    const settings = evalRow.settings && typeof evalRow.settings === "object" ? evalRow.settings : null;
+    $("html-balance").textContent = fmtPct(evalRow.balance);
+    $("html-balanced").textContent = fmtRateCount(evalRow.balanced, n);
+    $("html-doctype").textContent = fmtRateCount(evalRow.doctype, n);
+    $("html-pairs").textContent = `${fmtRateCount(evalRow.html_pair, n)} HTML · ${fmtRateCount(evalRow.body_pair, n)} body`;
+    meta.textContent = `step ${fmtNum(evalRow.step)} · ${n == null ? "sample count unavailable" : `${nf.format(n)} samples`}`;
+    const temperature = settings?.temperature;
+    const topK = settings?.top_k;
+    const cap = settings?.max_new_bytes ?? settings?.max_new;
+    note.textContent = temperature != null && topK != null && cap != null
+      ? `temperature ${temperature}; top-k ${topK}; cap ${cap} bytes. Closure and pair rates are proportions of generated continuations.`
+      : "Metrics describe generated samples; decode settings or sample count may be unavailable.";
+  }
+  const before = comparison && comparison.before && typeof comparison.before === "object"
+    ? comparison.before : null;
+  const after = comparison && comparison.after && typeof comparison.after === "object"
+    ? comparison.after : null;
+  if (before && after) {
+    const beforeStep = before.checkpoint_step;
+    const afterStep = after.checkpoint_step;
+    const provenance = beforeStep != null && afterStep != null
+      ? ` Checkpoints ${fmtNum(beforeStep)} → ${fmtNum(afterStep)}.` : "";
+    const beforeSamples = Number.isInteger(before.samples) && before.samples > 0 ? before.samples : null;
+    const afterSamples = Number.isInteger(after.samples) && after.samples > 0 ? after.samples : null;
+    paired.textContent = `Matched pre-run → final: tag closure ${fmtPct(before.balance)} → ${fmtPct(after.balance)}; balanced ${fmtRateCount(before.balanced, beforeSamples)} → ${fmtRateCount(after.balanced, afterSamples)}; HTML pairs ${fmtRateCount(before.html_pair, beforeSamples)} → ${fmtRateCount(after.html_pair, afterSamples)}.${provenance} ${comparison.caveat || "Small comparison; interpret cautiously."}`;
+  } else {
+    paired.textContent = "";
+  }
 }
 
 function renderConfig(cfg) {
@@ -151,10 +204,15 @@ function renderCheckpoints(hist, st) {
     const key = `${r.step}|${r.kind || "?"}|${r.checkpoint || ""}`;
     if (seen.has(key)) continue;
     seen.add(key);
-    const near = hist.find(
-      (h) => h.event === "log" && h.step === r.step && h.val != null
-    );
-    rows.push({ step: r.step, kind: r.kind || "ckpt", file: r.checkpoint, val: near && near.val });
+    const near = hist.find((h) => h.event === "log" && h.step === r.step &&
+      (h.val_total != null || h.val != null || h.val_v2 != null || h.val_v3a != null || h.val_legacy != null));
+    const val = near
+      ? near.val_total ?? near.val_v3a ?? near.val_v2 ?? near.val_legacy ?? near.val
+      : r.val_total ?? r.val_v3a ?? r.val_v2 ?? r.val_legacy ?? r.val ?? null;
+    const valLabel = near
+      ? (near.val_total_source ?? (near.val_v3a != null ? "v3a" : near.val_v2 != null ? "v2" : near.val_legacy != null || near.val != null ? "legacy" : ""))
+      : (r.val_total_source ?? (r.val_v3a != null ? "v3a" : r.val_v2 != null ? "v2" : r.val_legacy != null || r.val != null ? "legacy" : ""));
+    rows.push({ step: r.step, kind: r.kind || "ckpt", file: r.checkpoint, val, valLabel });
   }
   rows.sort((a, b) => b.step - a.step || String(b.kind).localeCompare(String(a.kind)));
 
@@ -170,11 +228,21 @@ function renderCheckpoints(hist, st) {
     const div = document.createElement("div");
     div.className = "ckpt-row";
     const file = basename(r.file) || latestPath || "checkpoint.pt";
-    div.innerHTML =
-      `<span class="ckpt-step">step ${nf.format(r.step)}</span>` +
-      `<span class="ckpt-kind ${r.kind === "best" ? "k-best" : ""}">${r.kind}</span>` +
-      `<span class="ckpt-file" title="${file}">${file}</span>` +
-      `<span class="ckpt-val">${r.val != null ? "val " + fmtLoss(r.val) : ""}</span>`;
+    const stepEl = document.createElement("span");
+    stepEl.className = "ckpt-step";
+    stepEl.textContent = `step ${nf.format(r.step)}`;
+    const kindEl = document.createElement("span");
+    kindEl.className = `ckpt-kind${r.kind === "best" ? " k-best" : ""}`;
+    kindEl.textContent = r.kind;
+    const fileEl = document.createElement("span");
+    fileEl.className = "ckpt-file";
+    fileEl.title = file;
+    fileEl.textContent = file;
+    const valEl = document.createElement("span");
+    valEl.className = "ckpt-val";
+    valEl.textContent = r.val != null
+      ? `${r.valLabel ? r.valLabel + " " : "val "}${fmtLoss(r.val)}` : "";
+    div.append(stepEl, kindEl, fileEl, valEl);
     el.appendChild(div);
   }
 }
@@ -203,21 +271,29 @@ function tooltipBase() {
 function renderCharts(hist) {
   if (typeof echarts === "undefined") return;
 
-  const logs = hist.filter((r) => r.event === "log" || r.event == null);
+  const logs = hist.filter((r) => r.event === "log" || r.event === "eval" || r.event == null);
   const steps = logs.map((r) => r.step);
   const train = logs.map((r) => (r.train != null ? r.train : null));
   const ema = logs.map((r) => (r.ema != null ? r.ema : null));
-  const val = logs.map((r) => (r.val != null ? r.val : null));
-  const valLm = logs.map((r) => (r.val_lm != null ? r.val_lm : null));
+  const valV2 = logs.map((r) => (r.val_v2 != null ? r.val_v2 : null));
+  const valV3a = logs.map((r) => (r.val_v3a != null ? r.val_v3a : null));
+  const valTotal = logs.map((r) => (r.val_total != null ? r.val_total : null));
+  const valLmV2 = logs.map((r) => (r.val_lm_v2 != null ? r.val_lm_v2 : null));
+  const valLmV3a = logs.map((r) => (r.val_lm_v3a != null ? r.val_lm_v3a : null));
+  const valLegacy = logs.map((r) => (r.val_legacy != null ? r.val_legacy : r.val != null ? r.val : null));
   const tps = logs.map((r) => (r.tok_s != null ? r.tok_s : null));
 
-  const bests = hist.filter((r) => r.event === "best" && r.val != null);
+  const bests = hist.filter((r) => r.event === "best" && (r.val_total != null || r.val_v2 != null || r.val_v3a != null || r.val_legacy != null || r.val != null));
   const ckpts = hist.filter((r) => r.event === "checkpoint");
-  const valMin = Math.min(...val.filter((v) => v != null), Infinity);
-  const base = isFinite(valMin) ? valMin - 0.02 : 0;
+  const valMin = Math.min(...valTotal.concat(valV2, valV3a).filter((v) => v != null), Infinity);
+  const ckptBase = isFinite(valMin) ? valMin - 0.02 : 0;
 
-  const bestPts = bests.map((b) => [b.step, b.val]);
-  const ckptPts = ckpts.map((c) => [c.step, base]);
+  const bestPtsV2 = bests.filter((b) => b.val_v2 != null).map((b) => [b.step, b.val_v2]);
+  const bestPtsV3a = bests.filter((b) => b.val_v3a != null).map((b) => [b.step, b.val_v3a]);
+  const bestPtsTotal = bests.filter((b) => b.val_total != null).map((b) => [b.step, b.val_total]);
+  const bestPtsLegacy = bests.filter((b) => b.val_legacy != null || b.val != null)
+    .map((b) => [b.step, b.val_legacy ?? b.val]);
+  const ckptPts = ckpts.map((c) => [c.step, ckptBase]);
 
   if (!lossChart) lossChart = echarts.init($("loss-chart"), null, { renderer: "canvas" });
   lossChart.setOption(
@@ -275,47 +351,77 @@ function renderCharts(hist) {
           z: 2,
         },
         {
-          name: "val",
+          name: "val total v2",
           type: "line",
-          data: steps.map((s, i) => [s, val[i]]),
+          data: steps.map((s, i) => [s, valV2[i]]),
           showSymbol: true,
           symbol: "circle",
           symbolSize: 3.5,
           lineStyle: { width: 1.8, color: "#f0b429" },
           itemStyle: { color: "#f0b429" },
-          connectNulls: true,
+          connectNulls: false,
           z: 3,
         },
         {
-          name: "val lm",
+          name: "val total v3a",
           type: "line",
-          data: steps.map((s, i) => [s, valLm[i]]),
+          data: steps.map((s, i) => [s, valV3a[i]]),
+          showSymbol: true,
+          symbol: "circle",
+          symbolSize: 3.5,
+          lineStyle: { width: 1.8, color: "#ff8f5b" },
+          itemStyle: { color: "#ff8f5b" },
+          connectNulls: false,
+          z: 3,
+        },
+        {
+          name: "val byte CE v2",
+          type: "line",
+          data: steps.map((s, i) => [s, valLmV2[i]]),
           showSymbol: false,
           lineStyle: { width: 1.2, color: "#c98ff0", type: "dashed" },
           itemStyle: { color: "#c98ff0" },
-          connectNulls: true,
+          connectNulls: false,
           z: 2,
         },
         {
-          name: "best",
-          type: "scatter",
-          data: bestPts,
-          symbol: "diamond",
-          symbolSize: 8,
-          itemStyle: { color: "#0a0d10", borderColor: "#5ee9b5", borderWidth: 1.6 },
-          tooltip: { valueFormatter: (v) => Number(v).toFixed(4) },
-          z: 4,
+          name: "val byte CE v3a",
+          type: "line",
+          data: steps.map((s, i) => [s, valLmV3a[i]]),
+          showSymbol: false,
+          lineStyle: { width: 1.2, color: "#84b9ff", type: "dashed" },
+          itemStyle: { color: "#84b9ff" },
+          connectNulls: false,
+          z: 2,
         },
-        {
-          name: "checkpoint",
-          type: "scatter",
-          data: ckptPts,
-          symbol: "rect",
-          symbolSize: [3, 9],
+        { name: "val total (dataset-tagged)", type: "line",
+          data: steps.map((s, i) => [s, valTotal[i]]), showSymbol: true,
+          symbol: "circle", symbolSize: 3.5,
+          lineStyle: { width: 1.5, color: "#d7c6a2", type: "dotted" },
+          itemStyle: { color: "#d7c6a2" }, connectNulls: false, z: 2 },
+        { name: "val total (unlabeled corpus)", type: "line",
+          data: steps.map((s, i) => [s, valLegacy[i]]), showSymbol: true,
+          symbol: "circle", symbolSize: 3.5,
+          lineStyle: { width: 1.5, color: "#9aa6b2", type: "dotted" },
+          itemStyle: { color: "#9aa6b2" }, connectNulls: false, z: 2 },
+        { name: "best v2", type: "scatter", data: bestPtsV2,
+          symbol: "diamond", symbolSize: 8,
+          itemStyle: { color: "#0a0d10", borderColor: "#f0b429", borderWidth: 1.6 },
+          tooltip: { valueFormatter: (v) => Number(v).toFixed(4) }, z: 4 },
+        { name: "best v3a", type: "scatter", data: bestPtsV3a,
+          symbol: "diamond", symbolSize: 8,
+          itemStyle: { color: "#0a0d10", borderColor: "#ff8f5b", borderWidth: 1.6 },
+          tooltip: { valueFormatter: (v) => Number(v).toFixed(4) }, z: 4 },
+        { name: "best (dataset-tagged)", type: "scatter", data: bestPtsTotal,
+          symbol: "diamond", symbolSize: 8,
+          itemStyle: { color: "#0a0d10", borderColor: "#d7c6a2", borderWidth: 1.6 }, z: 4 },
+        { name: "best (unlabeled corpus)", type: "scatter", data: bestPtsLegacy,
+          symbol: "diamond", symbolSize: 8,
+          itemStyle: { color: "#0a0d10", borderColor: "#9aa6b2", borderWidth: 1.6 }, z: 4 },
+        { name: "checkpoint", type: "scatter", data: ckptPts,
+          symbol: "rect", symbolSize: [3, 9],
           itemStyle: { color: "#58a6c9", opacity: 0.65 },
-          tooltip: { valueFormatter: () => "checkpoint" },
-          z: 4,
-        },
+          tooltip: { valueFormatter: () => "checkpoint" }, z: 4 },
       ],
     },
     { notMerge: true }
@@ -378,12 +484,48 @@ window.addEventListener("resize", () => {
 
 /* ---------- report ---------- */
 
+let lastReportText = null;
+function renderSafeMarkdown(markdown) {
+  const escaped = markdown.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const rendered = marked.parse(escaped, { gfm: true, breaks: false });
+  const parsed = new DOMParser().parseFromString(rendered, "text/html");
+  const allowed = new Set([
+    "H1", "H2", "H3", "H4", "H5", "H6", "P", "UL", "OL", "LI",
+    "STRONG", "EM", "DEL", "CODE", "PRE", "BLOCKQUOTE", "HR", "TABLE",
+    "THEAD", "TBODY", "TR", "TH", "TD", "A", "BR",
+  ]);
+  for (const node of parsed.body.querySelectorAll("*")) {
+    if (!allowed.has(node.tagName)) {
+      node.replaceWith(document.createTextNode(node.textContent || ""));
+      continue;
+    }
+    const href = node.tagName === "A" ? node.getAttribute("href") : null;
+    for (const attr of [...node.attributes]) node.removeAttribute(attr.name);
+    if (href) {
+      try {
+        const url = new URL(href, location.href);
+        if (url.protocol === "http:" || url.protocol === "https:") {
+          node.setAttribute("href", url.href);
+          node.setAttribute("rel", "noopener noreferrer");
+          node.setAttribute("target", "_blank");
+        }
+        else node.replaceWith(document.createTextNode(node.textContent || ""));
+      } catch {
+        node.replaceWith(document.createTextNode(node.textContent || ""));
+      }
+    }
+  }
+  return [...parsed.body.childNodes];
+}
+
 async function renderReport() {
   const el = $("report");
   try {
     const md = await fetchLive("report.md", "text");
+    if (md === lastReportText) return;
+    lastReportText = md;
     if (window.marked && marked.parse) {
-      el.innerHTML = marked.parse(md, { gfm: true, breaks: false });
+      el.replaceChildren(...renderSafeMarkdown(md));
     } else {
       const pre = document.createElement("pre");
       pre.textContent = md;
@@ -438,6 +580,7 @@ async function refresh() {
     renderStatus(st);
     renderCharts(hist);
     renderCheckpoints(hist, st);
+    await renderReport();
     removeBanner();
   } catch (e) {
     showBanner(`awaiting data — could not fetch live files (${e && e.message}). retrying…`);

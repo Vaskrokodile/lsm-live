@@ -210,11 +210,26 @@ a:hover { text-decoration: underline; }
 .sw-train { background: #4b5866; }
 .sw-ema { background: var(--accent); }
 .sw-val { background: var(--amber); }
+.sw-val-v3a { background: #ff8f5b; }
+.sw-legacy { background: #9aa6b2; }
+.sw-current { background: #d7c6a2; }
 .sw-best { width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg); border-radius: 0; }
 .sw-ckpt { background: var(--cyan); }
 
 .chart { height: 360px; padding: 6px 8px 4px; }
 .chart-sm { height: 240px; }
+
+.quality-kpis {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+#html-eval-note, #html-comparison {
+  margin: 10px 16px 12px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+@media (max-width: 760px) {
+  .quality-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 
 .grid-2 {
   display: grid;

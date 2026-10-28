@@ -1,0 +1,92 @@
+{
+  "run": "html_eval_last",
+  "total_samples": 32,
+  "balanced_samples": 0,
+  "doctype_samples": 0,
+  "settings": {
+    "top_k": 50,
+    "prompts": 4,
+    "samples_per_prompt": 8,
+    "max_new": 768,
+    "temperature": 0.8
+  },
+  "latest": {
+    "balance": 0.29566274140698484,
+    "doctype": 0,
+    "hit_cap": 32,
+    "html_pair": 0.1875,
+    "balanced": 0,
+    "body_pair": 0.1875,
+    "step": 84608,
+    "mean_generated_bytes": 768,
+    "samples": 32
+  },
+  "evaluations": [
+    {
+      "balance": 0.2331126520162414,
+      "doctype": 0.03125,
+      "hit_cap": 32,
+      "html_pair": 0.25,
+      "balanced": 0,
+      "body_pair": 0.25,
+      "step": 82608,
+      "mean_generated_bytes": 768,
+      "samples": 32
+    },
+    {
+      "balance": 0.20334405218427085,
+      "doctype": 0,
+      "hit_cap": 32,
+      "html_pair": 0.09375,
+      "balanced": 0,
+      "body_pair": 0.09375,
+      "step": 83858,
+      "mean_generated_bytes": 768,
+      "samples": 32
+    },
+    {
+      "balance": 0.29566274140698484,
+      "doctype": 0,
+      "hit_cap": 32,
+      "html_pair": 0.1875,
+      "balanced": 0,
+      "body_pair": 0.1875,
+      "step": 84608,
+      "mean_generated_bytes": 768,
+      "samples": 32
+    }
+  ],
+  "paired_checkpoint_comparison": {
+    "method": "same held out prompts, fixed seeds and decoding settings",
+    "caveat": "Generated structural metrics are small stochastic samples, not rendered-page acceptance.",
+    "settings": {
+      "top_k": 50,
+      "prompts": 4,
+      "samples_per_prompt": 8,
+      "max_new": 768,
+      "temperature": 0.8
+    },
+    "before": {
+      "balance": 0.2331126520162414,
+      "doctype": 0.03125,
+      "hit_cap": 32,
+      "html_pair": 0.25,
+      "balanced": 0,
+      "body_pair": 0.25,
+      "mean_generated_bytes": 768,
+      "checkpoint_step": 82608,
+      "samples": 32
+    },
+    "after": {
+      "balance": 0.29566274140698484,
+      "doctype": 0,
+      "hit_cap": 32,
+      "html_pair": 0.1875,
+      "balanced": 0,
+      "body_pair": 0.1875,
+      "mean_generated_bytes": 768,
+      "checkpoint_step": 84608,
+      "samples": 32
+    }
+  }
+}

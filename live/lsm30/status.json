@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-10-29T15:43:05Z",
-  "state": "training",
+  "updated_at": "2026-10-29T15:44:21Z",
+  "state": "done",
   "run": "ultron_lsm30_continuous",
-  "step": 46183,
+  "step": 46583,
   "target_step": 200000,
   "start_step": 0,
   "start_tokens": 0,
-  "tokens_seen": 94582784,
-  "train_loss": 0.9344,
-  "train_ema": 0.8128,
+  "tokens_seen": 95401984,
+  "train_loss": 1.0769,
+  "train_ema": 0.8218,
   "reward": null,
-  "val_total": 0.6168427467346191,
-  "val_lm": 0.3208390176296234,
-  "val_close": 1.221405029296875,
-  "val_depth": 0.751953125,
+  "val_total": 0.6126647591590881,
+  "val_lm": 0.32322078943252563,
+  "val_close": 1.16888427734375,
+  "val_depth": 0.7607421875,
   "best_val": 0.608488,
   "best_step": 45583,
-  "tok_per_s": 10663,
+  "tok_per_s": 10960,
   "checkpoint": "E:\\lsm30_out\\ultron_reason_leg5_sft_b4s512_eager_last.pt",
   "config": {
     "model": "LSM byte-level latent LM",
@@ -38,5 +38,20 @@
     "hardware": "RTX 3060 (local, Windows)",
     "resumed_from": "step 28583 / 58,537,984 tokens",
     "note": "reasoning head enabled: val_total = lm + 0.15*(close+depth); use val lm for cross-leg comparison"
+  },
+  "generation_eval": {
+    "balance": null,
+    "balanced": 0,
+    "doctype": 0,
+    "html_pair": 0,
+    "body_pair": 0,
+    "samples": 1,
+    "step": 46583,
+    "source": "leg5.txt",
+    "settings": {
+      "temperature": 0.6,
+      "top_k": 50,
+      "max_new_bytes": 4096
+    }
   }
 }

@@ -285,3 +285,4 @@
 {"step":43583,"checkpoint":"ultron_reason_leg5_sft_b4s512_eager_last.pt","kind":"last","event":"checkpoint"}
 {"step":43783,"train":1.3455,"ema":0.8721,"event":"log","val":0.6773783564567566,"val_legacy":0.6773783564567566,"val_total":0.6773783564567566,"val_lm":0.3306315243244171,"val_close":1.4097900390625,"val_depth":0.90185546875,"val_lm_v2":0.3306315243244171,"tok_s":10534}
 {"step":43983,"train":1.246,"ema":0.9514,"event":"log","val":0.6374465227127075,"val_legacy":0.6374465227127075,"val_total":0.6374465227127075,"val_lm":0.3275222182273865,"val_close":1.144287109375,"val_depth":0.921875,"val_lm_v2":0.3275222182273865,"tok_s":10695}
+{"step":44183,"train":0.9071,"ema":0.7109,"event":"log","val":0.6245931386947632,"val_legacy":0.6245931386947632,"val_total":0.6245931386947632,"val_lm":0.3280675709247589,"val_close":1.271759033203125,"val_depth":0.705078125,"val_lm_v2":0.3280675709247589,"tok_s":10637}

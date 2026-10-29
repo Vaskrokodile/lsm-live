@@ -13,3 +13,4 @@ checkpoint upd 100: E:\lsm30_out\ultron_reason_leg18_rl_b3s1024_eager_last.pt
 step 87093: upd 110: reward 0.517 ema 0.438 best 0.611; struct/valid/adhere/flu=(0.60,0.59,0.06,0.96); logp -0.309; 549 tok/s
 step 87103: upd 120: reward 0.413 ema 0.444 best 0.611; struct/valid/adhere/flu=(0.49,0.38,0.02,0.99); logp -0.349; 553 tok/s
 step 87113: upd 130: reward 0.512 ema 0.488 best 0.611; struct/valid/adhere/flu=(0.60,0.64,0.04,0.87); logp -0.190; 554 tok/s
+step 87123: upd 140: reward 0.450 ema 0.499 best 0.611; struct/valid/adhere/flu=(0.61,0.49,0.08,0.96); logp -0.274; 556 tok/s

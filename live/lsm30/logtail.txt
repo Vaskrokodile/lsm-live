@@ -8,3 +8,5 @@ step 87043: upd 60: reward 0.520 ema 0.504 best 0.611; struct/valid/adhere/flu=(
 step 87053: upd 70: reward 0.483 ema 0.506 best 0.611; struct/valid/adhere/flu=(0.62,0.59,0.05,1.00); logp -0.247; 556 tok/s
 step 87063: upd 80: reward 0.429 ema 0.515 best 0.611; struct/valid/adhere/flu=(0.56,0.34,0.06,0.95); logp -0.275; 559 tok/s
 step 87073: upd 90: reward 0.423 ema 0.466 best 0.611; struct/valid/adhere/flu=(0.55,0.52,0.07,0.96); logp -0.448; 555 tok/s
+step 87083: upd 100: reward 0.371 ema 0.430 best 0.611; struct/valid/adhere/flu=(0.54,0.39,0.05,1.00); logp -0.354; 566 tok/s
+checkpoint upd 100: E:\lsm30_out\ultron_reason_leg18_rl_b3s1024_eager_last.pt

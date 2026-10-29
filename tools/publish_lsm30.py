@@ -30,10 +30,49 @@ BEST_RE = re.compile(r"^new best validation total=([\d.]+) at step (\d+)")
 CKPT_RE = re.compile(r"^checkpoint step (\d+): (.+)$")
 COMPLETE_RE = re.compile(
     r"^complete: (\d+) tok/s, (\d+) new tokens, (\d+) total; val=\(([\d.eE+-]+)")
+RL_COMPLETE_RE = re.compile(r"^rl complete: (\d+) updates")
+_TAG_RE = re.compile(rb"</?([a-zA-Z][a-zA-Z0-9]*)[^>]*>")
+_VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input",
+         "link", "meta", "param", "source", "track", "wbr"}
+
+
+def sample_metrics(text):
+    """Rough generation-quality metrics for the HTML eval widget."""
+    raw = text.encode("utf-8", errors="replace")
+    lower = text.lower()
+    stack, closes, matched = [], 0, 0
+    for m in _TAG_RE.finditer(raw):
+        name = m.group(1).decode("ascii", "replace").lower()
+        if m.group(0).startswith(b"</"):
+            closes += 1
+            if stack and stack[-1] == name:
+                stack.pop()
+                matched += 1
+            elif name in stack:
+                while stack and stack.pop() != name:
+                    pass
+                matched += 1
+        elif name not in _VOID and not m.group(0).endswith(b"/>"):
+            stack.append(name)
+    return {
+        "balance": round(matched / closes, 4) if closes else None,
+        "balanced": int(closes > 0 and matched == closes and not stack),
+        "doctype": int("<!doctype" in lower),
+        "html_pair": int("<html" in lower and "</html>" in lower),
+        "body_pair": int("<body" in lower and "</body>" in lower),
+    }
+
+
+def extract_generated(text):
+    i = text.find("===== END WEBSITE =====")
+    if i > 0:
+        text = text[:i]
+    j = text.rfind("ASSISTANT PROJECT FILES:")
+    return text[j + len("ASSISTANT PROJECT FILES:"):] if j >= 0 else text
 EARLY_RE = re.compile(r"^early stopping at step (\d+); best step=(\d+) "
                       r"val total=([\d.]+)")
 RL_RE = re.compile(
-    r"^upd (\d+): reward ([\d.]+) ema ([\d.]+) best ([\d.]+); "
+    r"^step (\d+): upd (\d+): reward ([\d.]+) ema ([\d.]+) best ([\d.]+); "
     r"struct/valid/adhere/flu=\(([\d.eE+-]+),\s*([\d.eE+-]+),"
     r"\s*([\d.eE+-]+),\s*([\d.eE+-]+)\);\s*logp ([\d.eE+-]+|nan)")
 
@@ -72,11 +111,15 @@ def parse_logs(paths, start_step):
                 tm = TOKS_RE.search(ln)
                 if vm:
                     rec["val"] = num(vm.group(1))
+                    rec["val_legacy"] = rec["val"]
+                    rec["val_total"] = rec["val"]
                     for key, group in (("val_lm", 2), ("val_close", 3),
                                        ("val_depth", 4)):
                         v = num(vm.group(group))
                         if v is not None:
                             rec[key] = v
+                    if rec.get("val_lm") is not None:
+                        rec["val_lm_v2"] = rec["val_lm"]
                 if tm:
                     rec["tok_s"] = int(tm.group(1))
                 hist.append(rec)
@@ -84,11 +127,11 @@ def parse_logs(paths, start_step):
                 continue
             m = RL_RE.match(ln)
             if m:
-                (upd, rew, ema, best, s1, s2, s3, s4, lp) = m.groups()
-                rec = {"step": start_step + int(upd),
+                (step, upd, rew, ema, best, s1, s2, s3, s4, lp) = m.groups()
+                rec = {"step": int(step),
                        "reward": float(rew), "ema": float(ema),
-                       "event": "log", "leg": "rl",
-                       "val": float(best)}
+                       "best_reward": float(best),
+                       "event": "log", "leg": "rl"}
                 tm = TOKS_RE.search(ln)
                 if tm:
                     rec["tok_s"] = int(tm.group(1))
@@ -115,6 +158,9 @@ def parse_logs(paths, start_step):
                 s, bs, bv = m.groups()
                 hist.append({"step": int(s), "best_step": int(bs),
                              "val": float(bv), "event": "early-stop"})
+                finished = True
+                continue
+            if RL_COMPLETE_RE.match(ln):
                 finished = True
                 continue
             m = COMPLETE_RE.match(ln)
@@ -180,6 +226,9 @@ def main():
     p.add_argument("--target-step", type=int, default=None)
     p.add_argument("--checkpoint", default=None)
     p.add_argument("--config", default=None)
+    p.add_argument("--samples-glob", default=None,
+                   help="glob for generated sample dumps; newest file "
+                        "feeds the generation_eval widget")
     p.add_argument("--interval", type=float, default=60.0)
     args = p.parse_args()
 
@@ -264,6 +313,24 @@ def main():
             "checkpoint": args.checkpoint,
             "config": cfg,
         }
+        if args.samples_glob:
+            samps = [x for x in glob.glob(args.samples_glob)
+                     if os.path.exists(x)
+                     and os.path.getsize(x) > 512]
+            if samps:
+                newest = max(samps, key=os.path.getmtime)
+                try:
+                    gen = extract_generated(
+                        "\n".join(read_lines(newest)))
+                    m = sample_metrics(gen)
+                    status["generation_eval"] = {
+                        **m, "samples": 1,
+                        "step": status["step"],
+                        "source": os.path.basename(newest),
+                        "settings": {"temperature": 0.6, "top_k": 50,
+                                     "max_new_bytes": 4096}}
+                except OSError:
+                    pass
         with open(os.path.join(out, "status.json"), "w",
                   encoding="utf-8") as f:
             json.dump(status, f, indent=2)

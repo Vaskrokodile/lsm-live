@@ -281,6 +281,7 @@ function renderCharts(hist) {
   const valLmV2 = logs.map((r) => (r.val_lm_v2 != null ? r.val_lm_v2 : null));
   const valLmV3a = logs.map((r) => (r.val_lm_v3a != null ? r.val_lm_v3a : null));
   const valLegacy = logs.map((r) => (r.val_legacy != null ? r.val_legacy : r.val != null ? r.val : null));
+  const reward = logs.map((r) => (r.reward != null ? r.reward : null));
   const tps = logs.map((r) => (r.tok_s != null ? r.tok_s : null));
 
   const bests = hist.filter((r) => r.event === "best" && (r.val_total != null || r.val_v2 != null || r.val_v3a != null || r.val_legacy != null || r.val != null));
@@ -422,6 +423,11 @@ function renderCharts(hist) {
           symbol: "rect", symbolSize: [3, 9],
           itemStyle: { color: "#58a6c9", opacity: 0.65 },
           tooltip: { valueFormatter: () => "checkpoint" }, z: 4 },
+        { name: "rl reward", type: "line",
+          data: steps.map((s, i) => [s, reward[i]]), showSymbol: true,
+          symbol: "circle", symbolSize: 3,
+          lineStyle: { width: 1.6, color: "#4da3ff" },
+          itemStyle: { color: "#4da3ff" }, connectNulls: false, z: 3 },
       ],
     },
     { notMerge: true }

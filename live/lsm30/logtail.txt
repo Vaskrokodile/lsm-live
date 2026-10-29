@@ -1,1 +1,9 @@
 scanning corpus for tag-stack labels (one-time)...
+scanning corpus for tag-stack labels (one-time)...
+optimizer=ultron lr=0.0001 betas=(0.9, 0.984095744256) beta2_reference_tokens=None factored_beta1=0.0 batch=4 accum=1 amp=True reason=True eval_batches=1 compile_loss=False
+checkpoint step 46883: E:\lsm30_out\ultron_reason_leg7_sft_b4s512_eager_best.pt
+start step 46883, tokens 96323584; val total/lm/close/depth=(1.801963448524475, 1.4754269123077393, 0.93048095703125, 1.246429443359375)
+step 46884: train 1.7914 ema 1.7914; lm/close/depth=(1.6492273807525635, 0.373046875, 0.57470703125); warmup
+checkpoint step 47083: E:\lsm30_out\ultron_reason_leg7_sft_b4s512_eager_best.pt
+new best validation total=1.305290 at step 47083
+step 47083: train 1.2203 ema 1.1528; lm/close/depth=(1.0750267505645752, 0.10302734375, 0.865234375); val=(1.3052901029586792, 0.9769648313522339, 0.9715499877929688, 1.21728515625); 9868 tok/s

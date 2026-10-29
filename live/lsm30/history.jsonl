@@ -580,3 +580,6 @@
 {"step":68683,"reward":0.612,"ema":0.544,"best_reward":0.66,"event":"log","leg":"rl","tok_s":554}
 {"step":68683,"checkpoint":"ultron_reason_leg13_sft_b3s1024_eager_best.pt","kind":"best","event":"checkpoint"}
 {"step":68684,"train":1.3402,"ema":1.3402,"event":"log"}
+{"step":68883,"checkpoint":"ultron_reason_leg13_sft_b3s1024_eager_best.pt","kind":"best","event":"checkpoint"}
+{"step":68883,"val":1.386968,"event":"best"}
+{"step":68883,"train":0.9283,"ema":1.0885,"event":"log","val":1.386968155701955,"val_legacy":1.386968155701955,"val_total":1.386968155701955,"val_lm":1.1135321656862895,"val_close":0.9931437174479166,"val_depth":0.8297627766927084,"val_lm_v2":1.1135321656862895,"tok_s":9949}

@@ -816,3 +816,6 @@
 {"step":90883,"checkpoint":"ultron_reason_leg20_sft_b3s1024_eager_best.pt","kind":"best","event":"checkpoint"}
 {"step":90883,"val":1.453308,"event":"best"}
 {"step":90883,"train":0.8772,"ema":1.0274,"event":"log","val":1.4533081650733948,"val_legacy":1.4533081650733948,"val_total":1.4533081650733948,"val_lm":1.1777489185333252,"val_close":1.0097249348958333,"val_depth":0.8273366292317709,"val_lm_v2":1.1777489185333252,"tok_s":9438}
+{"step":91083,"checkpoint":"ultron_reason_leg20_sft_b3s1024_eager_best.pt","kind":"best","event":"checkpoint"}
+{"step":91083,"val":1.44147,"event":"best"}
+{"step":91083,"train":0.5936,"ema":0.965,"event":"log","val":1.4414696097373962,"val_legacy":1.4414696097373962,"val_total":1.4414696097373962,"val_lm":1.1550155878067017,"val_close":1.047393798828125,"val_depth":0.8622996012369791,"val_lm_v2":1.1550155878067017,"tok_s":9434}

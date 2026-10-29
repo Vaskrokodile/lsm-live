@@ -757,3 +757,5 @@
 {"step":87013,"reward":0.41,"ema":0.431,"best_reward":0.611,"event":"log","leg":"rl","tok_s":528}
 {"step":87023,"reward":0.403,"ema":0.413,"best_reward":0.611,"event":"log","leg":"rl","tok_s":558}
 {"step":87033,"reward":0.474,"ema":0.458,"best_reward":0.611,"event":"log","leg":"rl","tok_s":564}
+{"step":87043,"reward":0.52,"ema":0.504,"best_reward":0.611,"event":"log","leg":"rl","tok_s":563}
+{"step":87053,"reward":0.483,"ema":0.506,"best_reward":0.611,"event":"log","leg":"rl","tok_s":556}

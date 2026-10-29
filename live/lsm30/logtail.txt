@@ -68,3 +68,4 @@ checkpoint step 38583: E:\lsm30_out\ultron_reason_leg5_sft_b4s512_eager_best.pt
 new best validation total=0.622342 at step 38583
 step 38583: train 0.5471 ema 0.9178; lm/close/depth=(0.2866387963294983, 1.041015625, 0.6953125); val=(0.6223419904708862, 0.34471744298934937, 1.151611328125, 0.69921875); 10006 tok/s
 checkpoint step 38583: E:\lsm30_out\ultron_reason_leg5_sft_b4s512_eager_last.pt
+step 38783: train 0.9147 ema 0.8415; lm/close/depth=(0.7104917168617249, 0.666259765625, 0.6953125); val=(0.6377584934234619, 0.348065048456192, 1.2359771728515625, 0.6953125); 9788 tok/s

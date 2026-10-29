@@ -420,3 +420,4 @@
 {"step":53213,"reward":0.511,"ema":0.459,"best_reward":0.6,"event":"log","leg":"rl","tok_s":425}
 {"step":53223,"reward":0.423,"ema":0.465,"best_reward":0.6,"event":"log","leg":"rl","tok_s":431}
 {"step":53233,"reward":0.522,"ema":0.489,"best_reward":0.6,"event":"log","leg":"rl","tok_s":432}
+{"step":53243,"reward":0.515,"ema":0.5,"best_reward":0.6,"event":"log","leg":"rl","tok_s":430}

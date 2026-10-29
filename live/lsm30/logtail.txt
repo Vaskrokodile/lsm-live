@@ -5,3 +5,6 @@ step 77984: train 1.4735 ema 1.4735; lm/close/depth=(0.6383143067359924, 5.12858
 checkpoint step 78183: E:\lsm30_out\ultron_reason_leg16_sft_b3s1024_eager_best.pt
 new best validation total=1.401537 at step 78183
 step 78183: train 0.8571 ema 1.0427; lm/close/depth=(0.526675820350647, 1.87109375, 0.33203125); val=(1.4015366037686665, 1.1316246191660564, 0.9737345377604166, 0.8256785074869791); 9904 tok/s
+checkpoint step 78383: E:\lsm30_out\ultron_reason_leg16_sft_b3s1024_eager_best.pt
+new best validation total=1.396626 at step 78383
+step 78383: train 0.6721 ema 1.0141; lm/close/depth=(0.5547375679016113, 0.11474609375, 0.66796875); val=(1.3966258366902669, 1.1121821602185566, 1.047943115234375, 0.8483479817708334); 9823 tok/s

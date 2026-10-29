@@ -577,3 +577,4 @@
 {"step":68653,"reward":0.268,"ema":0.485,"best_reward":0.658,"event":"log","leg":"rl","tok_s":565}
 {"step":68663,"reward":0.491,"ema":0.533,"best_reward":0.66,"event":"log","leg":"rl","tok_s":561}
 {"step":68673,"reward":0.502,"ema":0.532,"best_reward":0.66,"event":"log","leg":"rl","tok_s":561}
+{"step":68683,"reward":0.612,"ema":0.544,"best_reward":0.66,"event":"log","leg":"rl","tok_s":554}

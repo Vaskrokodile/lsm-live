@@ -609,3 +609,4 @@
 {"step":72083,"tok_s":9868,"tokens_seen":162678784,"val":1.3912033836046855,"event":"complete"}
 {"step":72083,"checkpoint":"ultron_reason_leg14_sft_b3s1024_eager_best.pt","kind":"best","event":"checkpoint"}
 {"step":72084,"train":1.2383,"ema":1.2383,"event":"log"}
+{"step":72283,"train":0.9584,"ema":1.0913,"event":"log","val":1.3986664811770122,"val_legacy":1.3986664811770122,"val_total":1.3986664811770122,"val_lm":1.1208779414494832,"val_close":1.0276590983072917,"val_depth":0.8242645263671875,"val_lm_v2":1.1208779414494832,"tok_s":9931}

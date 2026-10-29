@@ -613,3 +613,4 @@
 {"step":72483,"checkpoint":"ultron_reason_leg14_sft_b3s1024_eager_best.pt","kind":"best","event":"checkpoint"}
 {"step":72483,"val":1.382372,"event":"best"}
 {"step":72483,"train":0.7184,"ema":1.0353,"event":"log","val":1.3823720216751099,"val_legacy":1.3823720216751099,"val_total":1.3823720216751099,"val_lm":1.0983365178108215,"val_close":1.0505472819010417,"val_depth":0.8430226643880209,"val_lm_v2":1.0983365178108215,"tok_s":9823}
+{"step":72683,"train":1.5337,"ema":0.9385,"event":"log","val":1.3963839809099834,"val_legacy":1.3963839809099834,"val_total":1.3963839809099834,"val_lm":1.1131732265154521,"val_close":1.06414794921875,"val_depth":0.8239237467447916,"val_lm_v2":1.1131732265154521,"tok_s":9736}

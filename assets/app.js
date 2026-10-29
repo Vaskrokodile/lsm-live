@@ -7,8 +7,8 @@
 const GH_OWNER = "Vaskrokodile";
 const GH_REPO = "lsm-live";
 const GH_BRANCH = "main";
-const RAW_BASE = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/live`;
-const LOCAL_BASE = "live";
+const RAW_BASE = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/live/lsm30`;
+const LOCAL_BASE = "live/lsm30";
 const REFRESH_MS = 30_000;
 
 const $ = (id) => document.getElementById(id);
@@ -18,7 +18,7 @@ const nf = new Intl.NumberFormat("en-US");
 
 async function fetchLive(name, kind) {
   const bust = `t=${Date.now()}`;
-  const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/live/${name}?ref=${GH_BRANCH}&${bust}`;
+  const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/live/lsm30/${name}?ref=${GH_BRANCH}&${bust}`;
   const tries = [
     { url: `${RAW_BASE}/${name}?${bust}`, src: "github:raw" },
     { url: apiUrl, src: "github:api", api: true },

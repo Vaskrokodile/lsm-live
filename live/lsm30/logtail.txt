@@ -30,3 +30,7 @@ step 77943: upd 260: reward 0.394 ema 0.351 best 0.557; struct/valid/adhere/flu=
 step 77953: upd 270: reward 0.504 ema 0.397 best 0.557; struct/valid/adhere/flu=(0.65,0.49,0.05,1.00); logp -0.800; 562 tok/s
 step 77963: upd 280: reward 0.342 ema 0.390 best 0.557; struct/valid/adhere/flu=(0.38,0.23,0.04,1.00); logp -0.960; 557 tok/s
 step 77973: upd 290: reward 0.475 ema 0.405 best 0.557; struct/valid/adhere/flu=(0.51,0.48,0.11,1.00); logp -0.637; 560 tok/s
+step 77983: upd 300: reward 0.462 ema 0.420 best 0.557; struct/valid/adhere/flu=(0.54,0.41,0.11,0.99); logp -0.411; 566 tok/s
+checkpoint upd 300: E:\lsm30_out\ultron_reason_leg15_rl_b3s1024_eager_last.pt
+checkpoint upd 300: E:\lsm30_out\ultron_reason_leg15_rl_b3s1024_eager_last.pt
+rl complete: 300 updates, ema_reward=0.420, best=0.557, 1651s

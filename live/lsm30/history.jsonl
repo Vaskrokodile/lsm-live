@@ -754,3 +754,4 @@
 {"step":86983,"tok_s":9845,"tokens_seen":208451584,"val":1.441969891389211,"event":"complete"}
 {"step":86993,"reward":0.442,"ema":0.435,"best_reward":0.543,"event":"log","leg":"rl","tok_s":527}
 {"step":87003,"reward":0.5,"ema":0.452,"best_reward":0.611,"event":"log","leg":"rl","tok_s":539}
+{"step":87013,"reward":0.41,"ema":0.431,"best_reward":0.611,"event":"log","leg":"rl","tok_s":528}

@@ -645,3 +645,7 @@
 {"step":77083,"checkpoint":"ultron_reason_leg14_sft_b3s1024_eager_last.pt","kind":"last","event":"checkpoint"}
 {"step":77283,"train":0.5366,"ema":0.9853,"event":"log","val":1.3913950721422832,"val_legacy":1.3913950721422832,"val_total":1.3913950721422832,"val_lm":1.1175058881441753,"val_close":1.0163472493489583,"val_depth":0.8095804850260416,"val_lm_v2":1.1175058881441753,"tok_s":9769}
 {"step":77483,"train":1.9265,"ema":1.0471,"event":"log","val":1.4008002281188965,"val_legacy":1.4008002281188965,"val_total":1.4008002281188965,"val_lm":1.1230849226315816,"val_close":1.024505615234375,"val_depth":0.8269297281901041,"val_lm_v2":1.1230849226315816,"tok_s":9890}
+{"step":77683,"best_step":74683,"val":1.382301,"event":"early-stop"}
+{"step":77683,"train":1.0895,"ema":1.0633,"event":"log","val":1.4067584872245789,"val_legacy":1.4067584872245789,"val_total":1.4067584872245789,"val_lm":1.125875453154246,"val_close":1.064666748046875,"val_depth":0.8078867594401041,"val_lm_v2":1.125875453154246,"tok_s":9874}
+{"step":77683,"checkpoint":"ultron_reason_leg14_sft_b3s1024_eager_last.pt","kind":"last","event":"checkpoint"}
+{"step":77683,"tok_s":9835,"tokens_seen":179881984,"val":1.4067584872245789,"event":"complete"}

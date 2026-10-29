@@ -1,1 +1,4 @@
-
+optimizer=ultron lr=0.0001 betas=(0.9, 0.984095744256) beta2_reference_tokens=None factored_beta1=0.0 batch=3 accum=1 amp=True reason=True eval_batches=6 compile_loss=False
+checkpoint step 68683: E:\lsm30_out\ultron_reason_leg13_sft_b3s1024_eager_best.pt
+start step 68683, tokens 152233984; val total/lm/close/depth=(1.4220926761627197, 1.1393770774205525, 1.078857421875, 0.8059132893880209)
+step 68684: train 1.3402 ema 1.3402; lm/close/depth=(0.7015628814697266, 3.76318359375, 0.494140625); warmup

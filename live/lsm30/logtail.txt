@@ -17,3 +17,4 @@ step 87123: upd 140: reward 0.450 ema 0.499 best 0.611; struct/valid/adhere/flu=
 step 87133: upd 150: reward 0.391 ema 0.500 best 0.611; struct/valid/adhere/flu=(0.53,0.40,0.03,0.96); logp -0.311; 558 tok/s
 step 87143: upd 160: reward 0.397 ema 0.493 best 0.611; struct/valid/adhere/flu=(0.59,0.54,0.06,0.96); logp -0.315; 559 tok/s
 step 87153: upd 170: reward 0.603 ema 0.504 best 0.611; struct/valid/adhere/flu=(0.66,0.82,0.06,0.97); logp -0.244; 559 tok/s
+step 87163: upd 180: reward 0.573 ema 0.523 best 0.620; struct/valid/adhere/flu=(0.61,0.69,0.12,1.00); logp -0.288; 552 tok/s

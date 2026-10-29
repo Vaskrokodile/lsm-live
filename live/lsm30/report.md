@@ -17,8 +17,10 @@ pre-leg-7 val numbers are not comparable to later ones.
 | leg 6 | **rl** | v2 | →46,883 | reward EMA 0.34→0.46, best 0.59; v2-val lm 0.392 (RL traded likelihood for structure) |
 | leg 7 | sft | v3 | →49,883 | corpus switch; union val lm ~1.09 baseline |
 | leg 8 | sft | v3 | →53,083 | early-stopped (patience); union val lm ~1.08 |
-| leg 9 | **rl** | v3 | →53,383 | reward EMA ~0.47, best 0.60; struct 0.6–0.75 |
-| leg 10+ | sft/rl | v3 | running | alternating; every 3rd leg is RL |
+| leg 9 | **rl** | v3 | →53,383 | reward EMA 0.509, best 0.608; struct 0.6–0.75, flu ~1.0 |
+| leg 10 | sft | v3 | →57,983 | early-stopped; union val lm ~1.10; v2-val 0.828 (partial recovery) |
+| leg 11 | sft | v3 @ seq 1024 | →72,983 target | full-document windows; union best total 1.378 |
+| leg 12+ | sft/rl | v3 | running | every 3rd leg is RL; seq 1024 |
 
 ## RL leg design (rl_ultron.py)
 

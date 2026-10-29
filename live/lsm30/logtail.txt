@@ -1,1 +1,2 @@
 rl leg: init step=53083 tokens=109021184 prompts=4000 K=4 gen=768 lr=5e-05 anchor=0.5
+step 53093: upd 10: reward 0.405 ema 0.380 best 0.438; struct/valid/adhere/flu=(0.45,0.37,0.05,0.98); logp -0.222; 448 tok/s

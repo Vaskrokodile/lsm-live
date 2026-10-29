@@ -1,3 +1,4 @@
 rl leg: init step=68383 tokens=151312384 prompts=4000 K=4 gen=768 lr=5e-05 anchor=0.5
 step 68393: upd 10: reward 0.394 ema 0.343 best 0.405; struct/valid/adhere/flu=(0.48,0.32,0.02,0.99); logp -0.496; 547 tok/s
 step 68403: upd 20: reward 0.513 ema 0.415 best 0.514; struct/valid/adhere/flu=(0.68,0.46,0.09,0.99); logp -0.242; 552 tok/s
+step 68413: upd 30: reward 0.416 ema 0.428 best 0.514; struct/valid/adhere/flu=(0.68,0.41,0.05,0.98); logp -0.590; 565 tok/s

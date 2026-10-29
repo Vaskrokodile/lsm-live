@@ -790,3 +790,4 @@
 {"step":87683,"checkpoint":"ultron_reason_leg19_sft_b3s1024_eager_best.pt","kind":"best","event":"checkpoint"}
 {"step":87683,"val":1.421652,"event":"best"}
 {"step":87683,"train":0.6109,"ema":0.9764,"event":"log","val":1.4216522971789043,"val_legacy":1.4216522971789043,"val_total":1.4216522971789043,"val_lm":1.1359718839327495,"val_close":1.0505472819010417,"val_depth":0.8539886474609375,"val_lm_v2":1.1359718839327495,"tok_s":9808}
+{"step":87883,"train":1.504,"ema":0.8929,"event":"log","val":1.4344629247983296,"val_legacy":1.4344629247983296,"val_total":1.4344629247983296,"val_lm":1.157762308915456,"val_close":1.0180867513020833,"val_depth":0.8265838623046875,"val_lm_v2":1.157762308915456,"tok_s":9923}

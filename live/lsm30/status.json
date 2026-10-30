@@ -17,7 +17,7 @@
   "best_val": 1.44147,
   "best_step": 91083,
   "tok_per_s": 9315,
-  "checkpoint": "E:\\lsm30_out\\ultron_reason_leg11_sft_b3s1024_eager_last.pt",
+  "checkpoint": "E:\\lsm30_out\\ultron_reason_leg20_sft_b3s1024_eager_last.pt",
   "config": {
     "model": "LSM byte-level latent LM",
     "parameters": "~33M",

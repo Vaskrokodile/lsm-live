@@ -833,3 +833,4 @@
 {"step":93083,"train":0.8975,"ema":0.889,"event":"log","val":1.47545591990153,"val_legacy":1.47545591990153,"val_total":1.47545591990153,"val_lm":1.2001248002052307,"val_close":1.01239013671875,"val_depth":0.823150634765625,"val_lm_v2":1.2001248002052307,"tok_s":9315}
 {"step":92693,"reward":0.431,"ema":0.372,"best_reward":0.495,"event":"log","leg":"rl","tok_s":369}
 {"step":92703,"reward":0.539,"ema":0.424,"best_reward":0.539,"event":"log","leg":"rl","tok_s":355}
+{"step":92713,"reward":0.484,"ema":0.481,"best_reward":0.596,"event":"log","leg":"rl","tok_s":452}

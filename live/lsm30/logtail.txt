@@ -14,3 +14,4 @@ step 92793: upd 110: reward 0.192 ema 0.307 best 0.618; struct/valid/adhere/flu=
 step 92803: upd 120: reward 0.189 ema 0.213 best 0.618; struct/valid/adhere/flu=(0.44,0.32,0.02,0.97); logp -1.165; 548 tok/s
 step 92813: upd 130: reward 0.128 ema 0.172 best 0.618; struct/valid/adhere/flu=(0.19,0.16,0.01,0.99); logp -1.631; 535 tok/s
 step 92823: upd 140: reward 0.167 ema 0.162 best 0.618; struct/valid/adhere/flu=(0.31,0.30,0.00,0.99); logp -1.728; 554 tok/s
+step 92833: upd 150: reward 0.340 ema 0.231 best 0.618; struct/valid/adhere/flu=(0.59,0.42,0.03,0.99); logp -0.930; 560 tok/s

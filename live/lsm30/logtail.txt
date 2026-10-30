@@ -12,3 +12,56 @@ step 92283: train 0.8693 ema 0.9304; lm/close/depth=(0.7184464931488037, 0.20410
 step 92483: train 1.1019 ema 0.7755; lm/close/depth=(0.9875443577766418, 0.123046875, 0.6393229365348816); val=(1.4625593225161235, 1.1816213726997375, 1.0455423990885417, 0.8273773193359375); 6394 tok/s
 step 92683: train 0.9938 ema 1.0173; lm/close/depth=(0.5576959252357483, 2.2682292461395264, 0.6393229365348816); val=(1.4519459406534831, 1.1688626011212666, 1.0674031575520833, 0.8198191324869791); 6537 tok/s
 step 92883: train 0.7728 ema 0.9164; lm/close/depth=(0.5585888028144836, 0.7565104365348816, 0.671875); val=(1.4660929838816326, 1.177007218201955, 1.0536702473958333, 0.8735682169596354); 7229 tok/s
+step 93083: train 1.2442 ema 0.9216; lm/close/depth=(0.9740049242973328, 1.3580728769302368, 0.443359375); val=(1.4603720307350159, 1.1850401560465496, 1.013427734375, 0.8221181233723959); 7099 tok/s
+Traceback (most recent call last):
+  File "C:\Users\kovax\AppData\Roaming\Python\Python313\site-packages\torch\serialization.py", line 944, in save
+    _save(
+    ~~~~~^
+        obj,
+        ^^^^
+    ...<3 lines>...
+        _disable_byteorder_record,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\kovax\AppData\Roaming\Python\Python313\site-packages\torch\serialization.py", line 1216, in _save
+    zip_file.write_record(name, storage, num_bytes)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: [enforce fail at inline_container.cc:820] . PytorchStreamWriter failed writing file data/24: file write failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\lsm30_out\lsm-run\train_ultron.py", line 494, in <module>
+    main()
+    ~~~~^^
+  File "E:\lsm30_out\lsm-run\train_ultron.py", line 459, in main
+    save(step, parts[0], train_ema, parts, val_parts)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\lsm30_out\lsm-run\train_ultron.py", line 277, in save
+    torch.save(state, temp_path)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kovax\AppData\Roaming\Python\Python313\site-packages\torch\serialization.py", line 943, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ~~~~~~~~~~~~~~~~~~~~^^^
+Traceback (most recent call last):
+  File "C:\Users\kovax\AppData\Roaming\Python\Python313\site-packages\torch\serialization.py", line 944, in save
+    _save(
+  File "C:\Users\kovax\AppData\Roaming\Python\Python313\site-packages\torch\serialization.py", line 1216, in _save
+    zip_file.write_record(name, storage, num_bytes)
+RuntimeError: [enforce fail at inline_container.cc:820] . PytorchStreamWriter failed writing file data/24: file write failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\lsm30_out\lsm-run\train_ultron.py", line 494, in <module>
+    main()
+  File "E:\lsm30_out\lsm-run\train_ultron.py", line 459, in main
+    save(step, parts[0], train_ema, parts, val_parts)
+  File "E:\lsm30_out\lsm-run\train_ultron.py", line 277, in save
+    torch.save(state, temp_path)
+  File "C:\Users\kovax\AppData\Roaming\Python\Python313\site-packages\torch\serialization.py", line 943, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+  File "C:\Users\kovax\AppData\Roaming\Python\Python313\site-packages\torch\serialization.py", line 784, in __exit__
+    self.file_like.write_end_of_file()
+RuntimeError: [enforce fail at inline_container.cc:626] . unexpected pos 32208640 vs 32208528

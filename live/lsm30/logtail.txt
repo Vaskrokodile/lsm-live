@@ -1,13 +1,1 @@
-Traceback (most recent call last):
-  File "E:\lsm30_out\lsm-run\train_ultron.py", line 494, in <module>
-    main()
-    ~~~~^^
-  File "E:\lsm30_out\lsm-run\train_ultron.py", line 136, in main
-    model.load_state_dict(payload["sd"], strict=True)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\kovax\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\module.py", line 2581, in load_state_dict
-    raise RuntimeError(
-    ...<3 lines>...
-    )
-RuntimeError: Error(s) in loading state_dict for LatentGraphLM:
-	Unexpected key(s) in state_dict: "core.edge_src", "core.edge_dst". 
+

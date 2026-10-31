@@ -747,3 +747,5 @@
 {"step":103463,"reward":0.522,"ema":0.574,"best_reward":0.667,"event":"log","leg":"rl","tok_s":468}
 {"step":103473,"reward":0.515,"ema":0.545,"best_reward":0.667,"event":"log","leg":"rl","tok_s":462}
 {"step":103483,"reward":0.543,"ema":0.533,"best_reward":0.667,"event":"log","leg":"rl","tok_s":466}
+{"step":103483,"checkpoint":"ultron_reason_leg10_sft_b3s1024_eager_best.pt","kind":"best","event":"checkpoint"}
+{"step":103484,"train":1.5429,"ema":1.5429,"event":"log"}

@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-10-31T15:58:53Z",
-  "state": "done",
+  "updated_at": "2026-10-31T16:00:33Z",
+  "state": "training",
   "run": "ultron_lsm30_continuous",
   "step": 113083,
   "target_step": 200000,
   "start_step": 0,
   "start_tokens": 0,
-  "tokens_seen": 288630784,
+  "tokens_seen": 231593984,
   "train_loss": 0.8086,
   "train_ema": 0.8921,
   "reward": null,
@@ -40,14 +40,14 @@
     "note": "reasoning head enabled: val_total = lm + 0.15*(close+depth); use val lm for cross-leg comparison"
   },
   "generation_eval": {
-    "balance": 0.8532,
+    "balance": 0.625,
     "balanced": 0,
     "doctype": 0,
     "html_pair": 1,
     "body_pair": 1,
     "samples": 1,
     "step": 113083,
-    "source": "ultron_reason_leg9_rl_b3s1024_eager_best_webgen_sample.txt",
+    "source": "ultron_reason_leg10_sft_b3s1024_eager_best_webgen_sample.txt",
     "settings": {
       "temperature": 0.6,
       "top_k": 50,

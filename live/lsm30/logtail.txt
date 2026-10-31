@@ -2,3 +2,6 @@ optimizer=ultron lr=0.0001 betas=(0.9, 0.984095744256) beta2_reference_tokens=No
 checkpoint step 103483: E:\lsm30_out\ultron_reason_leg10_sft_b3s1024_eager_best.pt
 start step 103483, tokens 259139584; val total/lm/close/depth=(1.7136093775431316, 1.4319572846094768, 1.0156300862630208, 0.8620503743489584)
 step 103484: train 1.5429 ema 1.5429; lm/close/depth=(1.1906356811523438, 1.9244791269302368, 0.423828125); warmup
+checkpoint step 103683: E:\lsm30_out\ultron_reason_leg10_sft_b3s1024_eager_best.pt
+new best validation total=1.449047 at step 103683
+step 103683: train 1.2581 ema 0.9674; lm/close/depth=(1.1609750986099243, 0.2216796875, 0.42578125); val=(1.4490472674369812, 1.1747850179672241, 0.9663238525390625, 0.862091064453125); 3237 tok/s

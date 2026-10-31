@@ -1,1 +1,22 @@
-
+optimizer=ultron lr=0.0001 betas=(0.9, 0.984095744256) beta2_reference_tokens=None factored_beta1=0.0 batch=3 accum=1 amp=True reason=True eval_batches=6 compile_loss=False
+usage: train_ultron.py [-h] --data DATA [--val-data VAL_DATA] [--no-reason]
+                       --init-from INIT_FROM [--resume-optimizer]
+                       [--steps STEPS] [--seed SEED] [--seq-len SEQ_LEN]
+                       [--batch BATCH] [--grad-accum GRAD_ACCUM] [--lr LR]
+                       [--optimizer {ultron,adamw,sgd}] [--beta1 BETA1]
+                       [--beta2 BETA2]
+                       [--beta2-reference-tokens BETA2_REFERENCE_TOKENS]
+                       [--factored-beta1 FACTORED_BETA1] [--momentum MOMENTUM]
+                       [--aux-w AUX_W] [--local-reason-labels]
+                       [--ultron-threshold ULTRON_THRESHOLD] [--chunk CHUNK]
+                       [--think-steps THINK_STEPS] [--leap-every LEAP_EVERY]
+                       [--leap-cache LEAP_CACHE] [--leap-skip LEAP_SKIP]
+                       [--leap-tol LEAP_TOL] [--eval-every EVAL_EVERY]
+                       [--early-stopping-patience EARLY_STOPPING_PATIENCE]
+                       [--best-ckpt BEST_CKPT] [--log-every LOG_EVERY]
+                       [--eval-batch EVAL_BATCH] [--eval-batches EVAL_BATCHES]
+                       [--val-fraction VAL_FRACTION]
+                       [--cuda-mem-fraction CUDA_MEM_FRACTION]
+                       [--save-every SAVE_EVERY] [--amp] [--compile-loss]
+                       [--compile-mode {default,reduce-overhead}] --ckpt CKPT
+train_ultron.py: error: best checkpoint already exists: E:\lsm30_out\ultron_reason_leg10_sft_b3s1024_eager_best.pt
